@@ -1,0 +1,23 @@
+@import './scss/normalise';
+
+* {
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #eff6ff;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.wrapper {
+  background: #ffffff;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.04);
+  border-radius: 8px;
+  // max-width: 1080px;
+  // margin: 50px auto;
+}
