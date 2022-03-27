@@ -21,3 +21,15 @@ body {
   // max-width: 1080px;
   // margin: 50px auto;
 }
+
+.aside__title,
+.header,
+.main {
+  padding: 40px;
+}
+
+.aside__title,
+.main__title {
+  font-size: 2rem;
+  font-weight: 600;
+}

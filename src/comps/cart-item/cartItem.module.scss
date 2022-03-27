@@ -1,0 +1,15 @@
+.item {
+  border: 1px solid #f3f3f3;
+  box-sizing: border-box;
+  border-radius: 15px;
+  padding: 5px;
+  margin: 10px;
+  &__img {
+    width: 70px;
+    height: 70px;
+    background-size: contain;
+    background-position: 0 -3px;
+    background-repeat: no-repeat;
+    margin-right: 5px;
+  }
+}

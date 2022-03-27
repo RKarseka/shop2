@@ -1,10 +1,11 @@
+import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/img/logo.png';
 import styles from './header.module.scss';
 
 export const Header = () => {
   return (
-    <header className={styles.header}>
+    <header className={classNames('header', styles.header)}>
       <Link to={'/'} className={styles.header__link}>
         <img src={logo} alt="logo" width={40} height={40} />
         <div className="">

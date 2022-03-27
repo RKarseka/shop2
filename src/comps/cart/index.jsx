@@ -1,25 +1,18 @@
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
 import { getCart } from '../../axios';
+import { CartItem } from '../cart-item';
 import styles from './cart.module.scss';
 
-export const Cart = () => {
-  const [cartLocal, setCartLocal] = useState([]);
-
-  useEffect(() => {
-    (async () => {
-      try {
-        setCartLocal(await getCart());
-        console.log(cartLocal);
-      } catch (error) {
-        console.log(error);
-      }
-    })();
-  }, []);
-
+export const Cart = ({ cartLocal }) => {
   return (
-    <aside className={classNames('wrapper', styles.aside)}>
-      {cartLocal.map(({ title, itemId }) => title)}
+    <aside className={classNames('wrapper', 'aside', styles.aside)}>
+      <h2 className={classNames('aside__title', styles.aside__title)}>
+        Корзина
+      </h2>
+      {cartLocal.map((item) => (
+        <CartItem key={item.itemId} {...item} />
+      ))}
     </aside>
   );
 };

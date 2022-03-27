@@ -5,3 +5,6 @@ export const getSneakers = () =>
 
 export const getCart = () =>
   axios.get('/sneakers__cart').then(({ data }) => data);
+
+export const getFav = () =>
+  axios.get('/sneakers__favorites').then(({ data }) => data);

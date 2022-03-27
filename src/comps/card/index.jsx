@@ -2,6 +2,8 @@ import { CardLoading } from './card-loading';
 import styles from './card.module.scss';
 import Liked from '../../assets/img/liked.svg';
 import UnLiked from '../../assets/img/unliked.svg';
+import { ITEM_PATH } from '../../const';
+import { useState } from 'react';
 
 export const Card = ({ isLoading, ...props }) => {
   return (
@@ -12,25 +14,27 @@ export const Card = ({ isLoading, ...props }) => {
 };
 
 const CardBody = ({ item, favorite = {}, cart = {} }) => {
+  const [isItemInCart, setIsItemInCart] = useState(false);
+  const [isItemInFavorite, setIsItemInFavorite] = useState(false);
   const { itemId, title, price } = item;
-  const { isFavorite, onClickFavorite = true } = favorite;
-  const { isItemsAdded, onClickPlus = true } = cart;
+  const { onClickFavorite = true } = favorite;
+  const { onClickPlus = true } = cart;
 
   return (
     <>
       <div className={styles.favorite}>
         {onClickFavorite && (
           <img
-            src={isFavorite ? Liked : UnLiked}
+            src={isItemInFavorite ? Liked : UnLiked}
             alt="unliked item"
             width={32}
             height={32}
-            onClick={onClickFavorite}
+            onClick={() => setIsItemInFavorite(!isItemInFavorite)}
           />
         )}
       </div>
       <img
-        src={`/img/sneakers/${itemId}.jpg`}
+        src={`${ITEM_PATH}${itemId}.jpg`}
         alt="sneakers #1 img"
         width={133}
         height={112}
@@ -45,7 +49,7 @@ const CardBody = ({ item, favorite = {}, cart = {} }) => {
         {onClickPlus && (
           <img
             className={styles.plus}
-            src={isItemsAdded ? '/img/btn-checked.svg' : '/img/btn-plus.svg'}
+            src={isItemInCart ? '/img/btn-checked.svg' : '/img/btn-plus.svg'}
             alt="plus icon"
             width={32}
             height={32}
