@@ -4,7 +4,8 @@ import { ITEM_PATH } from '../../const';
 import Remove from '../../assets/img/btn-remove.svg';
 import styles from './cartItem.module.scss';
 
-export const CartItem = ({ title, price, itemId, ...props }) => {
+export const CartItem = ({ item, toggleCartBtn }) => {
+  const { title, price, itemId, id } = item;
   return (
     <div className={classNames(styles.item, 'd-flex align-center mb-20')}>
       <div
@@ -18,7 +19,7 @@ export const CartItem = ({ title, price, itemId, ...props }) => {
         <b>{price} руб.</b>
       </div>
       <img
-        // onClick={() => onRemove(id)}
+        onClick={() => toggleCartBtn(item, id)}
         className="removeBtn"
         src={Remove}
         alt="Remove sneakers"

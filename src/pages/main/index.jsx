@@ -12,7 +12,6 @@ const RenderCards = ({
   searchValue,
   ...props
 }) => {
-  console.log(items);
   const filtredItems =
     items &&
     items.filter((item) =>
@@ -21,7 +20,12 @@ const RenderCards = ({
   return (
     <>
       {(isLoading ? [...Array(20)] : filtredItems).map((i = {}, index) => (
-        <Card key={i.itemId || index} item={i} isLoading={isLoading} />
+        <Card
+          key={i.itemId || index}
+          item={i}
+          isLoading={isLoading}
+          {...props}
+        />
       ))}
     </>
   );

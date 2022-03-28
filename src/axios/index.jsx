@@ -1,10 +1,8 @@
 import axios from 'axios';
 
-export const getSneakers = () =>
-  axios.get('/sneakers__items').then(({ data }) => data);
+export const axiosGet = (path) => axios.get(path).then(({ data }) => data);
 
-export const getCart = () =>
-  axios.get('/sneakers__cart').then(({ data }) => data);
+export const axiosDelId = (path, id) => axios.delete(`${path}/${id}`);
 
-export const getFav = () =>
-  axios.get('/sneakers__favorites').then(({ data }) => data);
+export const axiosPost = (path, item) =>
+  axios.post(path, item).then(({ data }) => data.id);

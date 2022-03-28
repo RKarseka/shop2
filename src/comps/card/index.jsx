@@ -13,23 +13,54 @@ export const Card = ({ isLoading, ...props }) => {
   );
 };
 
-const CardBody = ({ item, favorite = {}, cart = {} }) => {
-  const [isItemInCart, setIsItemInCart] = useState(false);
-  const [isItemInFavorite, setIsItemInFavorite] = useState(false);
+const CardBody = ({
+  item,
+  cartLocal,
+  favLocal,
+  toggleFavBtn,
+  toggleCartBtn,
+}) => {
   const { itemId, title, price } = item;
-  const { onClickFavorite = true } = favorite;
-  const { onClickPlus = true } = cart;
+
+  const [isCartBtnLock, setIsCartBtnLock] = useState(false);
+
+  const [isItemInCart, setIsItemInCart] = useState(
+    cartLocal.find((i) => i.itemId === itemId)?.id
+  );
+
+  const [isFavBtnLock, setIsFavBtnLock] = useState(false);
+
+  const [isItemInFavorite, setIsItemInFavorite] = useState(
+    favLocal.find((i) => i.itemId === itemId)?.id
+  );
+
+  const onClickFavorite = async () => {
+    if (isFavBtnLock) return;
+    setIsFavBtnLock(true);
+    setIsItemInFavorite(await toggleFavBtn(item, isItemInFavorite));
+    setIsFavBtnLock(false);
+  };
+
+  const onClickCart = async () => {
+    if (isCartBtnLock) return;
+    setIsCartBtnLock(true);
+    setIsItemInCart(await toggleCartBtn(item, isItemInCart));
+    setIsCartBtnLock(false);
+  };
 
   return (
     <>
-      <div className={styles.favorite}>
+      <div
+        style={{ cursor: isFavBtnLock ? 'progress' : 'pointer' }}
+        className={styles.favorite}
+      >
         {onClickFavorite && (
           <img
             src={isItemInFavorite ? Liked : UnLiked}
             alt="unliked item"
             width={32}
             height={32}
-            onClick={() => setIsItemInFavorite(!isItemInFavorite)}
+            onClick={onClickFavorite}
           />
         )}
       </div>
@@ -46,14 +77,14 @@ const CardBody = ({ item, favorite = {}, cart = {} }) => {
           <b>{price} руб.</b>
         </div>
 
-        {onClickPlus && (
+        {onClickCart && (
           <img
-            className={styles.plus}
+            style={{ cursor: isCartBtnLock ? 'progress' : 'pointer' }}
             src={isItemInCart ? '/img/btn-checked.svg' : '/img/btn-plus.svg'}
             alt="plus icon"
             width={32}
             height={32}
-            onClick={onClickPlus}
+            onClick={onClickCart}
           />
         )}
       </div>
