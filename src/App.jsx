@@ -3,13 +3,14 @@ import { Layout } from './comps/layout';
 import { Main } from './pages/main';
 import { Orders } from './pages/orders';
 
-import './app.scss';
 import { Favorite } from './pages/favorite';
 import { useEffect, useState } from 'react';
 import { axiosGet } from './axios';
 import { CART_URL, FAV_URL, ITEMS_URL } from './const';
 import { toggleBtn } from './fn';
 import { AppContext } from './context';
+
+import './app.scss';
 
 export const App = () => {
   const [isCardsLoading, setIsCardsLoading] = useState(false);

@@ -1,10 +1,9 @@
 import classNames from 'classnames';
 import { ITEM_PATH } from '../../const';
 
-import Remove from '../../assets/img/btn-remove.svg';
-import styles from './cartItem.module.scss';
+import styles from './spoilerItem.module.scss';
 
-export const CartItem = ({ item, toggleCartBtn }) => {
+export const SpoilerItem = ({ item, toggleBtn, spoilerItemIcon }) => {
   const { title, price, itemId, id } = item;
   return (
     <div className={classNames(styles.item, 'd-flex align-center mb-20')}>
@@ -19,9 +18,9 @@ export const CartItem = ({ item, toggleCartBtn }) => {
         <b>{price} руб.</b>
       </div>
       <img
-        onClick={() => toggleCartBtn(item, id)}
+        onClick={() => toggleBtn(item, id)}
         className="removeBtn"
-        src={Remove}
+        src={spoilerItemIcon}
         alt="Remove item"
         width={32}
         height={32}
