@@ -1,9 +1,12 @@
 import { CardLoading } from './card-loading';
 import styles from './card.module.scss';
 import Liked from '../../assets/img/liked.svg';
+import svgPlus from '../../assets/img/btn-plus.svg';
+import svgInCheked from '../../assets/img/btn-checked.svg';
 import UnLiked from '../../assets/img/unliked.svg';
 import { ITEM_PATH } from '../../const';
 import { useState } from 'react';
+import { getId } from '../../fn';
 
 export const Card = ({ isLoading, ...props }) => {
   return (
@@ -24,27 +27,25 @@ const CardBody = ({
 
   const [isCartBtnLock, setIsCartBtnLock] = useState(false);
 
-  const [isItemInCart, setIsItemInCart] = useState(
-    cartLocal.find((i) => i.itemId === itemId)?.id
-  );
+  const [apiIdCart, setApiIdCart] = useState(getId(itemId, cartLocal));
 
   const [isFavBtnLock, setIsFavBtnLock] = useState(false);
 
-  const [isItemInFavorite, setIsItemInFavorite] = useState(
-    favLocal.find((i) => i.itemId === itemId)?.id
-  );
+  const [apiIdFav, setApiIdFav] = useState(getId(itemId, favLocal));
 
   const onClickFavorite = async () => {
     if (isFavBtnLock) return;
     setIsFavBtnLock(true);
-    setIsItemInFavorite(await toggleFavBtn(item, isItemInFavorite));
+    setApiIdFav(await toggleFavBtn(item, apiIdFav));
     setIsFavBtnLock(false);
   };
 
   const onClickCart = async () => {
     if (isCartBtnLock) return;
     setIsCartBtnLock(true);
-    setIsItemInCart(await toggleCartBtn(item, isItemInCart));
+
+    setApiIdCart(await toggleCartBtn(item, apiIdCart));
+
     setIsCartBtnLock(false);
   };
 
@@ -56,7 +57,7 @@ const CardBody = ({
       >
         {onClickFavorite && (
           <img
-            src={isItemInFavorite ? Liked : UnLiked}
+            src={getId(itemId, favLocal) ? Liked : UnLiked}
             alt="unliked item"
             width={32}
             height={32}
@@ -80,7 +81,7 @@ const CardBody = ({
         {onClickCart && (
           <img
             style={{ cursor: isCartBtnLock ? 'progress' : 'pointer' }}
-            src={isItemInCart ? '/img/btn-checked.svg' : '/img/btn-plus.svg'}
+            src={getId(itemId, cartLocal) ? svgInCheked : svgPlus}
             alt="plus icon"
             width={32}
             height={32}

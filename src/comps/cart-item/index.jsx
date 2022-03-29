@@ -22,7 +22,7 @@ export const CartItem = ({ item, toggleCartBtn }) => {
         onClick={() => toggleCartBtn(item, id)}
         className="removeBtn"
         src={Remove}
-        alt="Remove sneakers"
+        alt="Remove item"
         width={32}
         height={32}
       />

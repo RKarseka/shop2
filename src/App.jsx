@@ -6,8 +6,10 @@ import { Orders } from './pages/orders';
 import './app.scss';
 import { Favorite } from './pages/favorite';
 import { useEffect, useState } from 'react';
-import { axiosDelId, axiosGet, axiosPost, getSneakers } from './axios';
+import { axiosGet } from './axios';
 import { CART_URL, FAV_URL, ITEMS_URL } from './const';
+import { toggleBtn } from './fn';
+import { AppContext } from './context';
 
 export const App = () => {
   const [isCardsLoading, setIsCardsLoading] = useState(false);
@@ -20,9 +22,9 @@ export const App = () => {
     (async () => {
       try {
         setIsCardsLoading(true);
-        setSneakers(await axiosGet(ITEMS_URL));
         setCartLocal(await axiosGet(CART_URL));
         setFavLocal(await axiosGet(FAV_URL));
+        setSneakers(await axiosGet(ITEMS_URL));
         setIsCardsLoading(false);
       } catch (error) {
         console.log(error);
@@ -30,66 +32,43 @@ export const App = () => {
     })();
   }, []);
 
-  const toggleFavBtn = async (item, remove = false) => {
-    try {
-      if (remove) {
-        setFavLocal(favLocal.filter(({ itemId }) => itemId !== item.itemId));
-        await axiosDelId(FAV_URL, Number(remove));
-        return false;
-      } else {
-        setFavLocal((prev) => [...prev, item]);
+  const toggleFavBtn = (item, id) =>
+    toggleBtn(item, id, setFavLocal, favLocal, FAV_URL);
 
-        return await axiosPost(FAV_URL, item);
-      }
-    } catch (err) {
-      console.log(err);
-      if (err?.response?.status === 429) {
-        alert('Палехче! Не так часто жмякай!');
-      }
-    }
-  };
-
-  const toggleCartBtn = async (item, remove = true) => {
-    try {
-      if (remove) {
-        setCartLocal(cartLocal.filter(({ itemId }) => itemId !== item.itemId));
-        await axiosDelId(CART_URL, Number(remove));
-        return false;
-      } else {
-        setCartLocal((prev) => [...prev, item]);
-
-        return await axiosPost(CART_URL, item);
-      }
-    } catch (err) {
-      console.log(err);
-      if (err?.response?.status === 429) {
-        alert('Палехче! Не так часто жмякай!');
-      }
-    }
-  };
+  const toggleCartBtn = (item, id) =>
+    toggleBtn(item, id, setCartLocal, cartLocal, CART_URL);
 
   return (
-    <Routes>
-      <Route
-        path="/"
-        element={<Layout cartLocal={cartLocal} toggleCartBtn={toggleCartBtn} />}
-      >
+    <AppContext.Provider value={{}}>
+      <Routes>
         <Route
-          index
+          path="/"
           element={
-            <Main
-              sneakers={sneakers}
-              isCardsLoading={isCardsLoading}
-              cartLocal={cartLocal}
-              favLocal={favLocal}
-              toggleFavBtn={toggleFavBtn}
-              toggleCartBtn={toggleCartBtn}
-            />
+            <Layout cartLocal={cartLocal} toggleCartBtn={toggleCartBtn} />
           }
-        />
-        <Route path="favorites" element={<Favorite favLocal={favLocal} />} />
-        <Route path="orders" element={<Orders />} />
-      </Route>
-    </Routes>
+        >
+          <Route
+            index
+            element={
+              <Main
+                sneakers={sneakers}
+                isCardsLoading={isCardsLoading}
+                cartLocal={cartLocal}
+                favLocal={favLocal}
+                toggleFavBtn={toggleFavBtn}
+                toggleCartBtn={toggleCartBtn}
+              />
+            }
+          />
+          <Route
+            path="favorites"
+            element={
+              <Favorite favLocal={favLocal} toggleFavBtn={toggleFavBtn} />
+            }
+          />
+          <Route path="orders" element={<Orders />} />
+        </Route>
+      </Routes>
+    </AppContext.Provider>
   );
 };
