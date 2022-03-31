@@ -1,5 +1,4 @@
 import { CardLoading } from './card-loading';
-import styles from './card.module.scss';
 import Liked from '../../assets/img/liked.svg';
 import svgPlus from '../../assets/img/btn-plus.svg';
 import svgInCheked from '../../assets/img/btn-checked.svg';
@@ -7,6 +6,8 @@ import UnLiked from '../../assets/img/unliked.svg';
 import { ITEM_PATH } from '../../const';
 import { useState } from 'react';
 import { getId } from '../../fn';
+
+import styles from './card.module.scss';
 
 export const Card = ({ isLoading, ...props }) => {
   return (

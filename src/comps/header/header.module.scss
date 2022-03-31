@@ -15,4 +15,15 @@
   &__subtitle {
     opacity: 0.5;
   }
+
+  &__links {
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 20px;
+    div {
+      display: grid;
+      grid-auto-flow: column;
+      grid-gap: 10px;
+    }
+  }
 }

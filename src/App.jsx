@@ -17,6 +17,7 @@ export const App = () => {
 
   const [sneakers, setSneakers] = useState([]);
   const [cartLocal, setCartLocal] = useState([]);
+  const [cartSum, setCartSum] = useState(0);
   const [favLocal, setFavLocal] = useState([]);
 
   useEffect(() => {
@@ -33,6 +34,13 @@ export const App = () => {
     })();
   }, []);
 
+  useEffect(() => {
+    setCartSum(
+      Math.round(cartLocal.reduce((prev, { price }) => prev + price, 0) * 100) /
+        100
+    );
+  }, [cartLocal]);
+
   const toggleFavBtn = (item, id) =>
     toggleBtn(item, id, setFavLocal, favLocal, FAV_URL);
 
@@ -45,7 +53,11 @@ export const App = () => {
         <Route
           path="/"
           element={
-            <Layout cartLocal={cartLocal} toggleCartBtn={toggleCartBtn} />
+            <Layout
+              cartSum={cartSum}
+              cartLocal={cartLocal}
+              toggleCartBtn={toggleCartBtn}
+            />
           }
         >
           <Route
@@ -64,7 +76,14 @@ export const App = () => {
           <Route
             path="favorites"
             element={
-              <Favorite favLocal={favLocal} toggleFavBtn={toggleFavBtn} />
+              <Favorite
+                sneakers={favLocal}
+                toggleCartBtn={toggleCartBtn}
+                toggleFavBtn={toggleFavBtn}
+                isLoading={isCardsLoading}
+                favLocal={favLocal}
+                cartLocal={cartLocal}
+              />
             }
           />
           <Route path="orders" element={<Orders />} />

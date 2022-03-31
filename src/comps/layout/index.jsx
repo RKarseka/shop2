@@ -5,16 +5,16 @@ import { Aside } from '../spoiler';
 
 import styles from './layout.module.scss';
 
-export const Layout = ({ ...props }) => {
+export const Layout = ({ cartSum, ...props }) => {
   return (
     <div className={styles.container}>
       <div className={classNames('wrapper', styles.main)}>
-        <Header />
+        <Header cartSum={cartSum} />
         <main>
           <Outlet />
         </main>
       </div>
-      <Aside {...props} />
+      <Aside cartSum={cartSum} {...props} />
     </div>
   );
 };

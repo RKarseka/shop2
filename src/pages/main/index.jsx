@@ -6,7 +6,7 @@ import { Search } from '../../comps/search';
 
 import styles from './main.module.scss';
 
-const RenderCards = ({
+export const RenderCards = ({
   sneakers: items,
   isCardsLoading: isLoading,
   searchValue,
@@ -15,7 +15,7 @@ const RenderCards = ({
   const filtredItems =
     items &&
     items.filter((item) =>
-      item.title.toLowerCase().includes(searchValue.toLowerCase())
+      item.title.toLowerCase().includes(searchValue?.toLowerCase())
     );
   return (
     <>
