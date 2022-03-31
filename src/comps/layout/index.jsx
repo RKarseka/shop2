@@ -5,7 +5,7 @@ import { Aside } from '../spoiler';
 
 import styles from './layout.module.scss';
 
-export const Layout = ({ cartSum, ...props }) => {
+export const Layout = ({ cartSum, setCartLocal, ...props }) => {
   return (
     <div className={styles.container}>
       <div className={classNames('wrapper', styles.main)}>
@@ -14,7 +14,7 @@ export const Layout = ({ cartSum, ...props }) => {
           <Outlet />
         </main>
       </div>
-      <Aside cartSum={cartSum} {...props} />
+      <Aside cartSum={cartSum} setCartLocal={setCartLocal} {...props} />
     </div>
   );
 };

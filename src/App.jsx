@@ -57,6 +57,7 @@ export const App = () => {
               cartSum={cartSum}
               cartLocal={cartLocal}
               toggleCartBtn={toggleCartBtn}
+              setCartLocal={setCartLocal}
             />
           }
         >

@@ -3,10 +3,15 @@ import { Cart } from '../cart';
 
 import styles from './spoiler.module.scss';
 
-export const Aside = ({ cartLocal, toggleCartBtn }) => {
+export const Aside = ({ cartSum, cartLocal, setCartLocal, toggleCartBtn }) => {
   return (
     <aside className={classNames('wrapper', 'aside', styles.aside)}>
-      <Cart itemsArr={cartLocal} toggleCartBtn={toggleCartBtn} />
+      <Cart
+        cartSum={cartSum}
+        itemsArr={cartLocal}
+        toggleCartBtn={toggleCartBtn}
+        setCartLocal={setCartLocal}
+      />
     </aside>
   );
 };

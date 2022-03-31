@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { RenderCards } from '../main';
 import { ITEM_PATH } from '../../const';
 import { getId } from '../../fn';
@@ -30,6 +30,10 @@ const CardBody = ({ item, cartLocal, toggleCartBtn, toggleFavBtn }) => {
     await toggleFavBtn(item, id);
   };
 
+  useEffect(() => {
+    setApiIdCart(getId(itemId, cartLocal));
+  }, [itemId, cartLocal]);
+
   return (
     <>
       <div style={{ cursor: 'pointer' }} className={styles.favorite}>
@@ -58,7 +62,7 @@ const CardBody = ({ item, cartLocal, toggleCartBtn, toggleFavBtn }) => {
         {onClickCart && (
           <img
             style={{ cursor: isCartBtnLock ? 'progress' : 'pointer' }}
-            src={getId(itemId, cartLocal) ? svgInCheked : svgPlus}
+            src={apiIdCart ? svgInCheked : svgPlus}
             alt="plus icon"
             width={32}
             height={32}

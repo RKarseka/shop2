@@ -4,7 +4,7 @@ import svgPlus from '../../assets/img/btn-plus.svg';
 import svgInCheked from '../../assets/img/btn-checked.svg';
 import UnLiked from '../../assets/img/unliked.svg';
 import { ITEM_PATH } from '../../const';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getId } from '../../fn';
 
 import styles from './card.module.scss';
@@ -50,6 +50,10 @@ const CardBody = ({
     setIsCartBtnLock(false);
   };
 
+  useEffect(() => {
+    setApiIdCart(getId(itemId, cartLocal));
+  }, [itemId, cartLocal]);
+
   return (
     <>
       <div
@@ -82,7 +86,7 @@ const CardBody = ({
         {onClickCart && (
           <img
             style={{ cursor: isCartBtnLock ? 'progress' : 'pointer' }}
-            src={getId(itemId, cartLocal) ? svgInCheked : svgPlus}
+            src={apiIdCart ? svgInCheked : svgPlus}
             alt="plus icon"
             width={32}
             height={32}

@@ -2,11 +2,12 @@ import classNames from 'classnames';
 import { SpoilerItem } from '../spoiler-item';
 import styles from './spoiler.module.scss';
 
-const RenderSpoiler = ({ itemsArr, ...props }) => (
+const RenderSpoiler = ({ itemsArr, children, ...props }) => (
   <div>
     {itemsArr.map((item) => (
       <SpoilerItem key={item.itemId} item={item} {...props} />
     ))}
+    {children}
   </div>
 );
 
@@ -28,13 +29,7 @@ const SpoilerEmpty = ({ content }) => {
   );
 };
 
-export const Spoiler = ({
-  spoilerTitle,
-  spoilerEmpty,
-  itemsArr,
-  children,
-  ...props
-}) => {
+export const Spoiler = ({ spoilerTitle, spoilerEmpty, itemsArr, ...props }) => {
   const { title } = spoilerTitle;
   return (
     <section className={styles.aside__item}>
@@ -47,8 +42,6 @@ export const Spoiler = ({
       ) : (
         <SpoilerEmpty content={spoilerEmpty} />
       )}
-
-      {children}
     </section>
   );
 };
