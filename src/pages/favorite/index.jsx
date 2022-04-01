@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
-import { RenderCards } from '../main';
 import { ITEM_PATH } from '../../const';
 import { getId } from '../../fn';
 

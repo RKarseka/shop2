@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { Card } from '../../comps/card';
 import { Search } from '../../comps/search';

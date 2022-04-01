@@ -33,15 +33,16 @@ export const Spoiler = ({ spoilerTitle, spoilerEmpty, itemsArr, ...props }) => {
   const { title } = spoilerTitle;
   return (
     <section className={styles.aside__item}>
-      <h2 className={classNames('spoiler__title', styles.aside__title)}>
+      <h2 className={classNames('spoiler__title ', styles.aside__title)}>
         {title}
       </h2>
-
-      {itemsArr.length ? (
-        <RenderSpoiler itemsArr={itemsArr} {...props} />
-      ) : (
-        <SpoilerEmpty content={spoilerEmpty} />
-      )}
+      <div className="mb-30">
+        {itemsArr.length ? (
+          <RenderSpoiler itemsArr={itemsArr} {...props} />
+        ) : (
+          <SpoilerEmpty content={spoilerEmpty} />
+        )}
+      </div>
     </section>
   );
 };
