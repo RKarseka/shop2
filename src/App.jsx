@@ -11,6 +11,7 @@ import { toggleBtn } from './fn';
 import { AppContext } from './context';
 
 import './app.scss';
+import { Main2 } from './pages/main2/main2';
 
 export const App = () => {
   const [isCardsLoading, setIsCardsLoading] = useState(false);
@@ -71,6 +72,19 @@ export const App = () => {
                 favLocal={favLocal}
                 toggleFavBtn={toggleFavBtn}
                 toggleCartBtn={toggleCartBtn}
+              />
+            }
+          />
+          <Route
+            path="main"
+            element={
+              <Main2
+              // sneakers={sneakers}
+              // isCardsLoading={isCardsLoading}
+              // cartLocal={cartLocal}
+              // favLocal={favLocal}
+              // toggleFavBtn={toggleFavBtn}
+              // toggleCartBtn={toggleCartBtn}
               />
             }
           />

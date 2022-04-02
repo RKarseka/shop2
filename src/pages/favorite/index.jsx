@@ -6,9 +6,17 @@ import { getId } from '../../fn';
 import Liked from '../../assets/img/liked.svg';
 import svgPlus from '../../assets/img/btn-plus.svg';
 import svgInCheked from '../../assets/img/btn-checked.svg';
+import back from '../../assets/img/back.svg';
 
 import styles from '../../comps/card/card.module.scss';
 import { CardLoading } from '../../comps/card/card-loading';
+import { Link } from 'react-router-dom';
+import { RenderPage } from '../../HOC/render-page';
+
+const data = {
+  title: 'Закладок нет :(',
+  subtitle: 'Вы ничего не добавляли в закладки',
+};
 
 const CardBody = ({ item, cartLocal, toggleCartBtn, toggleFavBtn }) => {
   const { itemId, title, price, id } = item;
@@ -79,20 +87,38 @@ const Card = ({ isLoading, ...props }) => (
   </div>
 );
 
-export function Favorite({ ...props }) {
+const RenderFav = RenderPage(Card);
+
+export const Favorite = ({ isLoading, ...props }) => {
   const { favLocal } = props;
   return (
     <div>
       <div className={'main'}>
-        <div className="main__header d-flex align-center mb-40 justify-between">
+        <div className="main__header d-flex align-center mb-40 ">
+          <Link to={'/'}>
+            <img
+              src={back}
+              alt="back btn"
+              width={35}
+              height={35}
+              className="mr-20"
+            />
+          </Link>
           <h2 className={classNames('main__title')}>Мои закладки</h2>
         </div>
         <div className="main__sneakers d-flex flex-wrap">
-          {favLocal.map((i) => (
+          <RenderFav
+            isLoading={isLoading}
+            items={favLocal}
+            data={data}
+            styles={styles.orders}
+            {...props}
+          />
+          {/* {favLocal.map((i) => (
             <Card key={i.itemId} item={i} {...props} />
-          ))}
+          ))} */}
         </div>
       </div>
     </div>
   );
-}
+};

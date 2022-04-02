@@ -9,6 +9,12 @@ import remove from '../../assets/img/btn-remove.svg';
 
 import styles from './orders.module.scss';
 import { Link } from 'react-router-dom';
+import { RenderPage } from '../../HOC/render-page';
+
+const data = {
+  title: 'У вас нет заказов',
+  subtitle: 'Оформите хотя бы один заказ.',
+};
 
 const Order = ({ isLoading, ...props }) => (
   <>{isLoading ? <OrderLoading /> : <OrderBody {...props} />}</>
@@ -23,13 +29,16 @@ const OrderBody = ({ item, ordersList, setOrdersList }) => {
   };
   return (
     <div className={styles.order}>
-      <div className={styles.order__id}>{`#${id}`}</div>
-      <div className="">
-        {items.map((i, index) => (
-          <p key={index}>{i}</p>
-        ))}
+      <div>
+        <div className={styles.order__id}>{`Заказ #${id}`}</div>
+
+        <div className="">{`Сумма: ${sum}`}</div>
       </div>
-      <div className="">{sum}</div>
+      <div className="">
+        {/* {items.map((i, index) => (
+          <p key={index}>{i}</p>
+        ))} */}
+      </div>
 
       <img
         onClick={delOrder}
@@ -43,19 +52,7 @@ const OrderBody = ({ item, ordersList, setOrdersList }) => {
   );
 };
 
-const RenderOrders = ({ isLoading, ordersList, setOrdersList }) => (
-  <>
-    {(isLoading ? [...Array(2)] : ordersList).map((i = {}, index) => (
-      <Order
-        key={i.id || index}
-        item={i}
-        isLoading={isLoading}
-        setOrdersList={setOrdersList}
-        ordersList={ordersList}
-      />
-    ))}
-  </>
-);
+const RenderFav = RenderPage(Order);
 
 export const Orders = () => {
   const [ordersList, setOrdersList] = useState([]);
@@ -89,10 +86,11 @@ export const Orders = () => {
           {'Мои заказы'}
         </h2>
       </div>
-      <RenderOrders
+      <RenderFav
         isLoading={isLoading}
         setOrdersList={setOrdersList}
-        ordersList={ordersList}
+        items={ordersList}
+        data={data}
       />
     </div>
   );

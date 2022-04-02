@@ -9,6 +9,7 @@ import { axiosDelId } from '../../axios';
 import { CART_URL } from '../../const';
 import { useState } from 'react';
 import { postOrder } from '../../fn';
+import classNames from 'classnames';
 
 const cartContent = {
   title: 'Корзина',
@@ -65,11 +66,15 @@ const CartFooter = ({ cartSum, setCartLocal, itemsArr, setIsOrderSended }) => {
       </ul>
       <button
         disabled={isOrderSending}
-        className={styles.greenBtn}
+        className={classNames(styles.btn, 'greenBtn')}
         onClick={onClickOrder}
       >
         Оформить заказ
-        <img src="/img/arrow.svg" alt="arrow in purchases button" />
+        <img
+          className={'arrow-right'}
+          src="/img/arrow.svg"
+          alt="arrow in purchases button"
+        />
       </button>
     </div>
   );
