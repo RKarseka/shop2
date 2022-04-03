@@ -1,9 +1,21 @@
 import { Page } from '../../components/page';
+import { RenderPageBody } from '../../components/render-page-body';
+import styles from './main2.module.scss';
 
-export const Main2 = () => {
+const Card = () => <span>WrappedComponent</span>;
+
+// const RenderMain2Body = RenderPageBody(Card);
+
+export const Main2 = ({ ...props }) => {
   return (
-    <div>
-      <Page body={'main3'} back />
-    </div>
+    <>
+      <Page
+        title={'Все кроссовки'}
+        Card={Card}
+        stylesBody={styles.body}
+        back
+        {...props}
+      />
+    </>
   );
 };

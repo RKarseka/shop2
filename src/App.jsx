@@ -79,12 +79,12 @@ export const App = () => {
             path="main"
             element={
               <Main2
-              // sneakers={sneakers}
-              // isCardsLoading={isCardsLoading}
-              // cartLocal={cartLocal}
-              // favLocal={favLocal}
-              // toggleFavBtn={toggleFavBtn}
-              // toggleCartBtn={toggleCartBtn}
+                items={sneakers}
+                isLoading={isCardsLoading}
+                // cartLocal={cartLocal}
+                // favLocal={favLocal}
+                // toggleFavBtn={toggleFavBtn}
+                // toggleCartBtn={toggleCartBtn}
               />
             }
           />

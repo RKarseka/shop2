@@ -10,9 +10,8 @@ export const Layout = ({ cartSum, setCartLocal, ...props }) => {
     <div className={styles.container}>
       <div className={classNames('wrapper', styles.main)}>
         <Header cartSum={cartSum} />
-        <main>
-          <Outlet />
-        </main>
+
+        <Outlet />
       </div>
       <Aside cartSum={cartSum} setCartLocal={setCartLocal} {...props} />
     </div>
