@@ -5,6 +5,8 @@ import { OrderLoading } from '../../comps/card/card-loading';
 import { OrdersCard } from '../../comps/order-card';
 import { ORDERS_URL } from '../../const';
 
+import stylesOrdersCard from '../../comps/order-card/order.module.scss';
+
 const data = {
   title: 'Мои заказы',
   noneCardsData: {
@@ -47,9 +49,9 @@ export const Orders = () => {
       <Page
         Card={OrdersCard}
         LoadingPatternCard={OrderLoading}
+        stylesItem={stylesOrdersCard.body}
         items={ordersList}
         removeOrder={removeOrder}
-        // stylesBody={styles.wrapper}
         isLoading={isLoading}
         {...data}
         back

@@ -9,7 +9,7 @@ import styles from './order.module.scss';
 export const OrdersCard = ({ item, removeOrder }) => {
   const { id, sum, rows } = item;
   return (
-    <div className={styles.body}>
+    <>
       <div>
         <div className={styles.body__id}>{`Заказ #${id}`}</div>
 
@@ -37,6 +37,6 @@ export const OrdersCard = ({ item, removeOrder }) => {
         width={32}
         height={32}
       />
-    </div>
+    </>
   );
 };

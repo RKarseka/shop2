@@ -19,7 +19,7 @@ export const SpoilerItem = ({ item, toggleBtn, spoilerItemIcon }) => {
       </div>
       <img
         onClick={() => toggleBtn(item, id)}
-        className="removeBtn"
+        className="remove-btn"
         src={spoilerItemIcon}
         alt="Remove item"
         width={32}

@@ -3,6 +3,7 @@ import { NoneCards } from '../../comps/noneCards';
 export const RenderPageBody = ({
   items = [],
   stylesBody,
+  stylesItem,
   noneCardsData,
   Card,
   LoadingPatternCard,
@@ -12,19 +13,19 @@ export const RenderPageBody = ({
 
   const obj = isLoading ? [...Array(2)] : items;
 
-  console.log(stylesBody);
-
   return (
     <>
       {obj.length ? (
         <div className={stylesBody}>
-          {obj.map((i = {}, index) =>
-            isLoading ? (
-              <LoadingPatternCard key={index} />
-            ) : (
-              <Card key={i.id || index} item={i} {...props} />
-            )
-          )}
+          {obj.map((i = {}, index) => (
+            <div className={stylesItem} key={i.id || index}>
+              {isLoading ? (
+                <LoadingPatternCard key={index} />
+              ) : (
+                <Card item={i} {...props} />
+              )}
+            </div>
+          ))}
         </div>
       ) : (
         <NoneCards {...noneCardsData} />

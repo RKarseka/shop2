@@ -3,10 +3,10 @@ import { useEffect, useState } from 'react';
 import { ITEM_PATH } from '../../const';
 import { getId } from '../../fn';
 
-import Liked from '../../assets/img/liked.svg';
+import svgLiked from '../../assets/img/liked.svg';
 import svgPlus from '../../assets/img/btn-plus.svg';
 import svgInCheked from '../../assets/img/btn-checked.svg';
-import back from '../../assets/img/back.svg';
+import svgBack from '../../assets/img/back.svg';
 
 import styles from '../../comps/card/card.module.scss';
 import { CardLoading } from '../../comps/card/card-loading';
@@ -46,7 +46,7 @@ const CardBody = ({ item, cartLocal, toggleCartBtn, toggleFavBtn }) => {
       <div style={{ cursor: 'pointer' }} className={styles.favorite}>
         {onClickFavorite && (
           <img
-            src={Liked}
+            src={svgLiked}
             alt="unliked item"
             width={32}
             height={32}
@@ -97,7 +97,7 @@ export const Favorite = ({ isLoading, ...props }) => {
         <div className="main__header d-flex align-center mb-40 ">
           <Link to={'/'}>
             <img
-              src={back}
+              src={svgBack}
               alt="back btn"
               width={35}
               height={35}
