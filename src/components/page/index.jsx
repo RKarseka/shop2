@@ -25,7 +25,7 @@ export const Page = ({ back, title, search, ...props }) => {
           {search && <div className="search">search</div>}
         </div>
       </div>
-      <RenderPageBody {...props} />
+      <RenderPageBody stylesBody={styles.body} {...props} />
     </main>
   );
 };

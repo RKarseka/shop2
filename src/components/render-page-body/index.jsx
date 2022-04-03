@@ -3,23 +3,32 @@ import { NoneCards } from '../../comps/noneCards';
 export const RenderPageBody = ({
   items = [],
   stylesBody,
-  data,
+  noneCardsData,
   Card,
+  LoadingPatternCard,
   ...props
 }) => {
   const { isLoading } = props;
 
   const obj = isLoading ? [...Array(2)] : items;
 
+  console.log(stylesBody);
+
   return (
-    <div className={stylesBody}>
+    <>
       {obj.length ? (
-        obj.map((i = {}, index) => (
-          <Card key={i.id || index} item={i} {...props} />
-        ))
+        <div className={stylesBody}>
+          {obj.map((i = {}, index) =>
+            isLoading ? (
+              <LoadingPatternCard key={index} />
+            ) : (
+              <Card key={i.id || index} item={i} {...props} />
+            )
+          )}
+        </div>
       ) : (
-        <NoneCards {...data} />
+        <NoneCards {...noneCardsData} />
       )}
-    </div>
+    </>
   );
 };

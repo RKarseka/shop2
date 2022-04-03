@@ -28,7 +28,7 @@ export const getId = (itemId, arr) =>
 export const postOrder = async (cartSum, cart) => {
   const order = {};
   order.sum = cartSum;
-  order.items = cart.map((i) => i.title);
+  order.rows = [...cart];
   try {
     return await axiosPost(ORDERS_URL, order);
   } catch (error) {

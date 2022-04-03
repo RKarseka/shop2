@@ -1,0 +1,36 @@
+.body {
+  display: grid;
+  padding: 5px 10px;
+  grid-gap: 10px;
+  align-items: center;
+  border-radius: 5px;
+  grid-template-columns: 120px 1fr auto;
+
+  border: 1px solid #0001;
+
+  &__id {
+    margin-bottom: 5px;
+  }
+}
+
+.rows {
+  display: grid;
+  grid-gap: 5px;
+}
+
+.row {
+  padding: 0 5px;
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: start;
+  align-items: center;
+  grid-gap: 5px;
+  border: 1px #0001 solid;
+  border-radius: 10px;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.06);
+    transform: translateY(-2px);
+  }
+}

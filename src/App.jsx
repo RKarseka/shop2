@@ -12,6 +12,7 @@ import { AppContext } from './context';
 
 import './app.scss';
 import { Main2 } from './pages/main2/main2';
+import { Favorite2, Favorites2 } from './pages/fav2';
 
 export const App = () => {
   const [isCardsLoading, setIsCardsLoading] = useState(false);
@@ -98,6 +99,19 @@ export const App = () => {
                 isLoading={isCardsLoading}
                 favLocal={favLocal}
                 cartLocal={cartLocal}
+              />
+            }
+          />
+          <Route
+            path="favorites2"
+            element={
+              <Favorites2
+                items={favLocal}
+                // toggleCartBtn={toggleCartBtn}
+                // toggleFavBtn={toggleFavBtn}
+                isLoading={isCardsLoading}
+                // favLocal={favLocal}
+                // cartLocal={cartLocal}
               />
             }
           />

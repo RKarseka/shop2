@@ -17,7 +17,6 @@ export const RenderPage =
             />
           ))
         ) : (
-          // '....'
           <NoneCards {...data} />
         )}
       </div>

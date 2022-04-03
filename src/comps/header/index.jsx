@@ -18,6 +18,7 @@ export const Header = ({ cartSum }) => {
         </div>
       </Link>
       <div className={styles.header__links}>
+        <Link to={'/favorites2'}>fav2</Link>
         <Link to={'/main'}>main2</Link>
 
         <div>
