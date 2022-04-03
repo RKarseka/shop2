@@ -9,7 +9,7 @@ import { CART_URL, FAV_URL, ITEMS_URL } from './const';
 import { toggleBtn } from './fn';
 import { AppContext } from './context';
 
-import { Main2 } from './pages/main2/main2';
+import cardStyles from './comps/card/card.module.scss';
 
 import './app.scss';
 import { Favorites } from './pages/favorites';
@@ -67,25 +67,13 @@ export const App = () => {
             index
             element={
               <Main
-                sneakers={sneakers}
-                isCardsLoading={isCardsLoading}
+                items={sneakers}
+                isLoading={isCardsLoading}
                 cartLocal={cartLocal}
                 favLocal={favLocal}
                 toggleFavBtn={toggleFavBtn}
                 toggleCartBtn={toggleCartBtn}
-              />
-            }
-          />
-          <Route
-            path="main"
-            element={
-              <Main2
-                items={sneakers}
-                isLoading={isCardsLoading}
-                // cartLocal={cartLocal}
-                // favLocal={favLocal}
-                // toggleFavBtn={toggleFavBtn}
-                // toggleCartBtn={toggleCartBtn}
+                stylesItem={cardStyles.card}
               />
             }
           />
@@ -99,6 +87,7 @@ export const App = () => {
                 toggleFavBtn={toggleFavBtn}
                 isLoading={isCardsLoading}
                 cartLocal={cartLocal}
+                stylesItem={cardStyles.card}
               />
             }
           />

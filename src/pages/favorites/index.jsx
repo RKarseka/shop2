@@ -1,10 +1,9 @@
 import { Page } from '../../components/page';
 import { CardLoading } from '../../comps/card/card-loading';
-import { Card2 } from '../../comps/card/card2';
 
-import cardStyles from '../../comps/card/card.module.scss';
 import { useEffect, useState } from 'react';
 import { getId } from '../../fn';
+import { Card } from '../../comps/card';
 
 const data = {
   title: 'Мои закладки',
@@ -14,7 +13,7 @@ const data = {
   },
 };
 
-const Card2Render = ({ cartLocal, toggleCartBtn, toggleFavBtn, ...props }) => {
+const CardRender = ({ cartLocal, toggleCartBtn, toggleFavBtn, ...props }) => {
   const { item } = props;
 
   const { itemId, id } = item;
@@ -41,7 +40,7 @@ const Card2Render = ({ cartLocal, toggleCartBtn, toggleFavBtn, ...props }) => {
 
   return (
     <>
-      <Card2
+      <Card
         onClickCart={onClickCart}
         isCartBtnLock={isCartBtnLock}
         isAddedToCart={apiIdCart}
@@ -57,8 +56,7 @@ export const Favorites = ({ ...props }) => {
   return (
     <>
       <Page
-        Card={Card2Render}
-        stylesItem={cardStyles.card}
+        Card={CardRender}
         LoadingPatternCard={CardLoading}
         {...data}
         {...props}

@@ -1,10 +1,10 @@
 import { NoneCards } from '../../comps/noneCards';
 
 export const RenderPageBody = ({
-  items = [],
+  items,
   stylesBody,
   stylesItem,
-  noneCardsData,
+  noneCardsData = {},
   Card,
   LoadingPatternCard,
   ...props

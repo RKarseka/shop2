@@ -1,4 +1,7 @@
 import classNames from 'classnames';
+
+import remove from '../../assets/img/btn-remove.svg';
+
 import styles from './search.module.scss';
 
 export const Search = ({ searchValue, setSearchValue }) => {
@@ -11,14 +14,14 @@ export const Search = ({ searchValue, setSearchValue }) => {
         <img
           onClick={() => setSearchValue('')}
           className={classNames(styles.clear, 'cu-p')}
-          src="/img/btn-remove.svg"
+          src={remove}
           alt="Close"
           width={32}
           height={32}
         />
       )}
 
-      <img src="/img/search.svg" alt="search svg  " />
+      <img src="/img/search.svg" alt="search svg" />
       <input
         className={styles.input}
         onChange={onChangeSearchInput}

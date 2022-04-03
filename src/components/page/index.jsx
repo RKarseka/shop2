@@ -5,25 +5,31 @@ import { RenderPageBody } from '../render-page-body';
 
 import styles from './page.module.scss';
 
-export const Page = ({ back, title, search, ...props }) => {
+export const Page = ({
+  back,
+  title,
+  search,
+
+  ...props
+}) => {
   return (
     <main className={styles.container}>
       <div className={styles.header}>
-        {back && (
-          <Link to={'/'} className="page__back">
-            <img
-              src={imgBack}
-              alt="back btn"
-              width={35}
-              height={35}
-              className="mr-20"
-            />
-          </Link>
-        )}
         <div className={styles.title}>
+          {back && (
+            <Link to={'/'} className="page__back">
+              <img
+                src={imgBack}
+                alt="back btn"
+                width={35}
+                height={35}
+                className="mr-20"
+              />
+            </Link>
+          )}
           <h2 className="page__title-text">{title}</h2>
-          {search && <div className="search">search</div>}
         </div>
+        {search}
       </div>
       <RenderPageBody stylesBody={styles.body} {...props} />
     </main>

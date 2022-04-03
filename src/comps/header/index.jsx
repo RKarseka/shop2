@@ -18,8 +18,6 @@ export const Header = ({ cartSum }) => {
         </div>
       </Link>
       <div className={styles.header__links}>
-        <Link to={'/main'}>main2</Link>
-
         <div>
           <img src={cart} alt="favorites item" width={18} height={18} />
           <p>{`${cartSum} руб.`}</p>

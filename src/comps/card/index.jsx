@@ -1,59 +1,23 @@
-import { CardLoading } from './card-loading';
-import Liked from '../../assets/img/liked.svg';
+import { ITEM_PATH } from '../../const';
+
+import svgLiked from '../../assets/img/liked.svg';
+import svgUnliked from '../../assets/img/unliked.svg';
 import svgPlus from '../../assets/img/btn-plus.svg';
 import svgInCheked from '../../assets/img/btn-checked.svg';
-import UnLiked from '../../assets/img/unliked.svg';
-import { ITEM_PATH } from '../../const';
-import { useEffect, useState } from 'react';
-import { getId } from '../../fn';
 
 import styles from './card.module.scss';
 
-export const Card = ({ isLoading, ...props }) => {
-  return (
-    <div className={styles.card}>
-      {isLoading ? <CardLoading /> : <CardBody {...props} />}
-    </div>
-  );
-};
-
-const CardBody = ({
+export const Card = ({
   item,
-  cartLocal,
-  favLocal,
-  toggleFavBtn,
-  toggleCartBtn,
+  isFavBtnLock,
+  onClickFavorite,
+  isLiked,
+
+  isCartBtnLock,
+  onClickCart,
+  isAddedToCart,
 }) => {
   const { itemId, title, price } = item;
-
-  const [isCartBtnLock, setIsCartBtnLock] = useState(false);
-
-  const [apiIdCart, setApiIdCart] = useState(getId(itemId, cartLocal));
-
-  const [isFavBtnLock, setIsFavBtnLock] = useState(false);
-
-  const [apiIdFav, setApiIdFav] = useState(getId(itemId, favLocal));
-
-  const onClickFavorite = async () => {
-    if (isFavBtnLock) return;
-    setIsFavBtnLock(true);
-    setApiIdFav(await toggleFavBtn(item, apiIdFav));
-    setIsFavBtnLock(false);
-  };
-
-  const onClickCart = async () => {
-    if (isCartBtnLock) return;
-    setIsCartBtnLock(true);
-
-    setApiIdCart(await toggleCartBtn(item, apiIdCart));
-
-    setIsCartBtnLock(false);
-  };
-
-  useEffect(() => {
-    setApiIdCart(getId(itemId, cartLocal));
-  }, [itemId, cartLocal]);
-
   return (
     <>
       <div
@@ -62,7 +26,7 @@ const CardBody = ({
       >
         {onClickFavorite && (
           <img
-            src={getId(itemId, favLocal) ? Liked : UnLiked}
+            src={isLiked ? svgLiked : svgUnliked}
             alt="unliked item"
             width={32}
             height={32}
@@ -86,7 +50,7 @@ const CardBody = ({
         {onClickCart && (
           <img
             style={{ cursor: isCartBtnLock ? 'progress' : 'pointer' }}
-            src={apiIdCart ? svgInCheked : svgPlus}
+            src={isAddedToCart ? svgInCheked : svgPlus}
             alt="plus icon"
             width={32}
             height={32}
