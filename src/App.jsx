@@ -91,7 +91,7 @@ export const App = () => {
               />
             }
           />
-          <Route path="orders" element={<Orders />} />
+          <Route path="orders" element={<Orders cartLocal={cartLocal} />} />
         </Route>
       </Routes>
     </AppContext.Provider>

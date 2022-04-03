@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { axiosDelId, axiosGet } from '../../axios';
-import { Page } from '../../components/page';
+import { Page } from '../../comps/page';
 import { OrderLoading } from '../../comps/card/card-loading';
 import { OrdersCard } from '../../comps/order-card';
 import { ORDERS_URL } from '../../const';
@@ -15,7 +15,7 @@ const data = {
   },
 };
 
-export const Orders = () => {
+export const Orders = ({ cartLocal }) => {
   const [ordersList, setOrdersList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isHandlingRequest, setisHandlingRequest] = useState(false);
@@ -30,7 +30,7 @@ export const Orders = () => {
         console.log(error);
       }
     })();
-  }, []);
+  }, [cartLocal]);
 
   const removeOrder = async (id) => {
     if (isHandlingRequest) return;

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Page } from '../../components/page';
+import { Page } from '../../comps/page';
 import { Card } from '../../comps/card';
 import { CardLoading } from '../../comps/card/card-loading';
 import { Search } from '../../comps/search';

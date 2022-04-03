@@ -1,6 +1,5 @@
 import React from 'react';
-import { axiosDelId } from '../../axios';
-import { ITEM_PATH, ORDERS_URL } from '../../const';
+import { ITEM_PATH } from '../../const';
 
 import remove from '../../assets/img/btn-remove.svg';
 

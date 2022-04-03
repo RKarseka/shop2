@@ -1,4 +1,4 @@
-import { Page } from '../../components/page';
+import { Page } from '../../comps/page';
 import { CardLoading } from '../../comps/card/card-loading';
 
 import { useEffect, useState } from 'react';
