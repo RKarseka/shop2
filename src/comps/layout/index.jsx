@@ -1,11 +1,12 @@
 import classNames from 'classnames';
 import { Outlet } from 'react-router-dom';
+import { Aside } from '../aside';
 import { Header } from '../header';
-import { Aside } from '../spoiler';
 
 import styles from './layout.module.scss';
 
-export const Layout = ({ cartSum, setCartLocal, ...props }) => {
+export const Layout = ({ ...props }) => {
+  const { cartSum } = props;
   return (
     <div className={styles.container}>
       <div className={classNames('wrapper', styles.main)}>
@@ -13,7 +14,7 @@ export const Layout = ({ cartSum, setCartLocal, ...props }) => {
 
         <Outlet />
       </div>
-      <Aside cartSum={cartSum} setCartLocal={setCartLocal} {...props} />
+      <Aside {...props} />
     </div>
   );
 };

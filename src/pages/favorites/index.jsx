@@ -10,6 +10,7 @@ const data = {
   noneCardsData: {
     title: 'Закладок нет :(',
     subtitle: 'Вы ничего не добавляли в закладки.',
+    btn: true,
   },
 };
 

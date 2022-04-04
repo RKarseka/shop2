@@ -1,8 +1,7 @@
 import imgOrderComplite from '../../assets/img/complete-order.jpg';
 import imgCartEmpty from '../../assets/img/empty-cart.jpg';
-import Remove from '../../assets/img/btn-remove.svg';
 
-import { Spoiler } from '../spoiler/aside-item';
+// import { Spoiler } from '../spoiler/aside-item';
 
 import styles from './cart.module.scss';
 import { axiosDelId } from '../../axios';
@@ -90,7 +89,7 @@ export const Cart = ({
   const [isOrderSended, setIsOrderSended] = useState(cartEmptyContent);
   return (
     <>
-      <Spoiler
+      {/* <Spoiler
         children={
           <CartFooter
             cartSum={cartSum}
@@ -106,7 +105,7 @@ export const Cart = ({
         toggleBtn={toggleCartBtn}
         spoilerItemIcon={Remove}
         {...props}
-      />
+      /> */}
     </>
   );
 };

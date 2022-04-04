@@ -4,8 +4,9 @@ import { ORDERS_URL } from '../const';
 export const toggleBtn = async (item, id, setArrFn, arr, URL) => {
   try {
     if (id) {
-      setArrFn(arr.filter(({ itemId }) => itemId !== item.itemId));
       await axiosDelId(URL, Number(id));
+
+      setArrFn(arr.filter(({ itemId }) => itemId !== item.itemId));
       return false;
     } else {
       const newId = await axiosPost(URL, item);

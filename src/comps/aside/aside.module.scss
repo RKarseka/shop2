@@ -1,0 +1,23 @@
+.container {
+  width: 320px;
+  padding: 10px;
+}
+
+.header {
+  margin-bottom: 40px;
+}
+
+.title {
+  margin-bottom: 40px;
+  border-bottom: 1px solid #0001;
+  display: grid;
+  align-content: center;
+}
+
+.item {
+  border: 1px solid #f3f3f3;
+  box-sizing: border-box;
+  border-radius: 15px;
+  padding: 5px;
+  margin-bottom: 10px;
+}

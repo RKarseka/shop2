@@ -1,14 +1,14 @@
 import classNames from 'classnames';
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 import styles from './noneCard.module.scss';
 
-export const NoneCards = ({ title, subtitle }) => {
-  return (
-    <div className={styles.container}>
-      <h3 className={styles.title}>{title}</h3>
-      <p className={styles.subtitle}>{subtitle}</p>
+export const NoneCards = ({ img, title, subtitle, btn }) => (
+  <div className={styles.container}>
+    {img && <img src={img} alt="none cards img" width={120} height={120} />}
+    <h3 className={styles.title}>{title}</h3>
+    <p className={styles.subtitle}>{subtitle}</p>
+    {btn && (
       <Link to={'/'}>
         <button className={classNames(styles.btn, 'greenBtn')}>
           <img
@@ -19,6 +19,6 @@ export const NoneCards = ({ title, subtitle }) => {
           Вернуться назад
         </button>
       </Link>
-    </div>
-  );
-};
+    )}
+  </div>
+);

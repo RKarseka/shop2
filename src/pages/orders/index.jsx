@@ -12,10 +12,11 @@ const data = {
   noneCardsData: {
     title: 'У вас нет заказов',
     subtitle: 'Оформите хотя бы один заказ.',
+    btn: true,
   },
 };
 
-export const Orders = ({ cartLocal }) => {
+export const Orders = () => {
   const [ordersList, setOrdersList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isHandlingRequest, setisHandlingRequest] = useState(false);
@@ -30,7 +31,7 @@ export const Orders = ({ cartLocal }) => {
         console.log(error);
       }
     })();
-  }, [cartLocal]);
+  }, []);
 
   const removeOrder = async (id) => {
     if (isHandlingRequest) return;

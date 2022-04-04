@@ -1,13 +1,12 @@
 import classNames from 'classnames';
 import { SpoilerItem } from '../spoiler-item';
-import styles from './spoiler.module.scss';
+import styles from './aside.module.scss';
 
-const RenderSpoiler = ({ itemsArr, children, ...props }) => (
+const RenderSpoiler = ({ itemsArr, ...props }) => (
   <div>
     {itemsArr.map((item) => (
       <SpoilerItem key={item.itemId} item={item} {...props} />
     ))}
-    {children}
   </div>
 );
 
@@ -29,20 +28,27 @@ const SpoilerEmpty = ({ content }) => {
   );
 };
 
-export const Spoiler = ({ spoilerTitle, spoilerEmpty, itemsArr, ...props }) => {
+export const Spoiler = ({
+  spoilerTitle,
+  spoilerEmpty,
+  itemsArr,
+  children,
+  ...props
+}) => {
   const { title } = spoilerTitle;
   return (
     <section className={styles.aside__item}>
-      <h2 className={classNames('spoiler__title ', styles.aside__title)}>
+      <h2 className={classNames('spoiler__title', styles.aside__title)}>
         {title}
       </h2>
-      <div className="mb-30">
-        {itemsArr.length ? (
-          <RenderSpoiler itemsArr={itemsArr} {...props} />
-        ) : (
-          <SpoilerEmpty content={spoilerEmpty} />
-        )}
-      </div>
+
+      {itemsArr.length ? (
+        <RenderSpoiler itemsArr={itemsArr} {...props} />
+      ) : (
+        <SpoilerEmpty content={spoilerEmpty} />
+      )}
+
+      {children}
     </section>
   );
 };

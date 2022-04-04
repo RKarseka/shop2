@@ -20,7 +20,7 @@ export const RenderPageBody = ({
           {obj.map((i = {}, index) => (
             <div className={stylesItem} key={i.id || index}>
               {isLoading ? (
-                <LoadingPatternCard key={index} />
+                <LoadingPatternCard />
               ) : (
                 <Card item={i} {...props} />
               )}

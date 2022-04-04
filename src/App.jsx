@@ -60,6 +60,7 @@ export const App = () => {
               cartLocal={cartLocal}
               toggleCartBtn={toggleCartBtn}
               setCartLocal={setCartLocal}
+              isLoading={isCardsLoading}
             />
           }
         >
@@ -91,7 +92,7 @@ export const App = () => {
               />
             }
           />
-          <Route path="orders" element={<Orders cartLocal={cartLocal} />} />
+          <Route path="orders" element={<Orders />} />
         </Route>
       </Routes>
     </AppContext.Provider>
