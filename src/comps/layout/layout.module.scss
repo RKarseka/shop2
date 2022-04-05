@@ -1,6 +1,6 @@
 .wrapper {
   margin: 0 auto;
-  max-width: 1100px;
+  max-width: 1120px;
   // display: grid;
   // justify-content: center;
   // grid-template-columns: minmax(320px, 1100px);
@@ -11,4 +11,14 @@
   position: relative;
 
   margin-right: 330px;
+}
+
+.top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 30px;
+  background-color: #eff6ff;
+  // z-index: 1000;
 }

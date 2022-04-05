@@ -6,6 +6,7 @@ import svgPlus from '../../assets/img/btn-plus.svg';
 import svgInCheked from '../../assets/img/btn-checked.svg';
 
 import styles from './card.module.scss';
+import classNames from 'classnames';
 
 export const Card = ({
   item,
@@ -35,13 +36,19 @@ export const Card = ({
         )}
       </div>
       <img
+        className={styles.img}
         src={`${ITEM_PATH}${itemId}.jpg`}
         alt="sneakers #1 img"
-        width={133}
-        height={112}
+        width={170}
+        height={140}
       />
       <h5 className={styles.title}>{title}</h5>
-      <div className="d-flex justify-between align-center">
+      <div
+        className={classNames(
+          'd-flex justify-between align-center',
+          styles.footer
+        )}
+      >
         <div className="d-flex flex-column ">
           <span className={styles.price}>Цена:</span>
           <b>{price} руб.</b>

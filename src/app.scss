@@ -1,8 +1,10 @@
 @import './scss/normalise';
+
 :root {
   --color-main: #9dd558;
   --color-stroke: #f3f3f3;
 }
+
 * {
   font-family: 'Inter', sans-serif;
 }
@@ -13,7 +15,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #eff6ff;
-  padding: 10px;
+  padding: 0 10px;
   font-size: 16px;
 }
 
@@ -24,6 +26,7 @@ body {
   // max-width: 1080px;
   // margin: 50px auto;
 }
+
 .header,
 .main,
 .aside__title {

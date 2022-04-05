@@ -1,18 +1,19 @@
 .container {
+  // display: none;
   position: absolute;
   right: -10px;
-  top: 40px;
+  top: 30px;
   // transform: translateX(calc(100% + 10px));
 }
 
 .wrapper {
   position: fixed;
-  top: 40px;
+  top: 30px;
   // left: 0;
   width: 320px;
   padding: 10px;
   margin-bottom: 30px;
-  max-height: calc(100vh - 80px);
+  max-height: calc(100vh - 60px);
 }
 
 .header {
@@ -36,4 +37,5 @@
 
 .items {
   overflow: auto;
+  max-height: calc(100vh - 406px);
 }

@@ -1,7 +1,13 @@
 .header {
+  position: sticky;
+  top: 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 100;
+  background-color: #fff;
+  border-radius: 8px;
+
   &__link {
     display: flex;
     align-items: center;
@@ -20,6 +26,7 @@
     display: grid;
     grid-auto-flow: column;
     grid-gap: 20px;
+
     div {
       display: grid;
       grid-auto-flow: column;

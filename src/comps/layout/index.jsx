@@ -11,9 +11,11 @@ export const Layout = ({ ...props }) => {
     <div className={styles.wrapper}>
       <div className={classNames('wrapper', styles.container)}>
         <Header cartSum={cartSum} />
-        <Aside {...props} />
 
         <Outlet />
+
+        <Aside {...props} />
+        <div className={styles.top} />
       </div>
     </div>
   );

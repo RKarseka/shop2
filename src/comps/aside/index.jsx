@@ -1,16 +1,16 @@
+import { useState } from 'react';
+
 import classNames from 'classnames';
+
+import { RenderPageBody } from '../render-page-body';
+import { OrderLoading } from '../card/card-loading';
+import { CartFooter } from './cart-footer';
+import { CartItem } from '../cart-item';
 
 import imgOrderComplite from '../../assets/img/complete-order.jpg';
 import imgCartEmpty from '../../assets/img/empty-cart.jpg';
 
-import { RenderPageBody } from '../render-page-body';
-import { OrderLoading } from '../card/card-loading';
-
-import { CartFooter } from './cart-footer';
-import { CartItem } from '../cart-item';
-
 import styles from './aside.module.scss';
-import { useState } from 'react';
 
 const cartContent = {
   title: 'Корзина',
@@ -31,7 +31,7 @@ export const Aside = ({ cartSum, cartLocal, setCartLocal, ...props }) => {
   const [emptyText, setEmptyText] = useState({ ...cartEmptyContent });
 
   return (
-    <aside className={classNames('wrapper', styles.container)}>
+    <aside className={classNames(styles.container)}>
       <div className={classNames('wrapper', styles.wrapper)}>
         <div className={styles.header}>
           <h2 className={classNames('aside__title', styles.title)}>

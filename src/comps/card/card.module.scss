@@ -1,7 +1,12 @@
 .card {
+  position: relative;
+  display: grid;
+  align-content: space-between;
+  justify-items: center;
   border: 1px solid var(--color-main);
-  padding: 20px;
+  padding: 15px;
   width: 220px;
+  height: 280px;
   border-radius: 10px;
   transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
   // cursor: pointer;
@@ -19,6 +24,8 @@
 
   .favorite {
     position: absolute;
+    left: 15px;
+    top: 15px;
   }
 
   .price {
@@ -29,4 +36,12 @@
       font-size: 13px;
     }
   }
+}
+
+.img {
+  object-fit: cover;
+}
+
+.footer {
+  justify-self: stretch;
 }
