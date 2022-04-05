@@ -7,11 +7,12 @@ export const RenderPageBody = ({
   noneCardsData = {},
   Card,
   LoadingPatternCard,
+  emptyArrLength = 2,
   ...props
 }) => {
   const { isLoading } = props;
 
-  const obj = isLoading ? [...Array(2)] : items;
+  const obj = isLoading ? [...Array(emptyArrLength)] : items;
 
   return (
     <>

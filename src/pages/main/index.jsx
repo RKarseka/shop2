@@ -81,6 +81,7 @@ export const Main = ({ items, ...props }) => {
         }
         LoadingPatternCard={CardLoading}
         title={searchValue ? 'Поиск по запросу:' : 'Все кроссовки'}
+        emptyArrLength={10}
         {...props}
       />
     </>

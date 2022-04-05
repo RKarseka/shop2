@@ -7,12 +7,12 @@ import { useEffect, useState } from 'react';
 import { axiosGet } from './axios';
 import { CART_URL, FAV_URL, ITEMS_URL } from './const';
 import { toggleBtn } from './fn';
-import { AppContext } from './context';
+
+import { Favorites } from './pages/favorites';
 
 import cardStyles from './comps/card/card.module.scss';
 
 import './app.scss';
-import { Favorites } from './pages/favorites';
 
 export const App = () => {
   const [isCardsLoading, setIsCardsLoading] = useState(false);
@@ -50,51 +50,49 @@ export const App = () => {
     toggleBtn(item, id, setCartLocal, cartLocal, CART_URL);
 
   return (
-    <AppContext.Provider value={{}}>
-      <Routes>
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <Layout
+            cartSum={cartSum}
+            cartLocal={cartLocal}
+            toggleCartBtn={toggleCartBtn}
+            setCartLocal={setCartLocal}
+            isLoading={isCardsLoading}
+          />
+        }
+      >
         <Route
-          path="/"
+          index
           element={
-            <Layout
-              cartSum={cartSum}
-              cartLocal={cartLocal}
-              toggleCartBtn={toggleCartBtn}
-              setCartLocal={setCartLocal}
+            <Main
+              items={sneakers}
               isLoading={isCardsLoading}
+              cartLocal={cartLocal}
+              favLocal={favLocal}
+              toggleFavBtn={toggleFavBtn}
+              toggleCartBtn={toggleCartBtn}
+              stylesItem={cardStyles.card}
             />
           }
-        >
-          <Route
-            index
-            element={
-              <Main
-                items={sneakers}
-                isLoading={isCardsLoading}
-                cartLocal={cartLocal}
-                favLocal={favLocal}
-                toggleFavBtn={toggleFavBtn}
-                toggleCartBtn={toggleCartBtn}
-                stylesItem={cardStyles.card}
-              />
-            }
-          />
+        />
 
-          <Route
-            path="favorites"
-            element={
-              <Favorites
-                items={favLocal}
-                toggleCartBtn={toggleCartBtn}
-                toggleFavBtn={toggleFavBtn}
-                isLoading={isCardsLoading}
-                cartLocal={cartLocal}
-                stylesItem={cardStyles.card}
-              />
-            }
-          />
-          <Route path="orders" element={<Orders />} />
-        </Route>
-      </Routes>
-    </AppContext.Provider>
+        <Route
+          path="favorites"
+          element={
+            <Favorites
+              items={favLocal}
+              toggleCartBtn={toggleCartBtn}
+              toggleFavBtn={toggleFavBtn}
+              isLoading={isCardsLoading}
+              cartLocal={cartLocal}
+              stylesItem={cardStyles.card}
+            />
+          }
+        />
+        <Route path="orders" element={<Orders />} />
+      </Route>
+    </Routes>
   );
 };

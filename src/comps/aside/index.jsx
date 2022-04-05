@@ -32,28 +32,31 @@ export const Aside = ({ cartSum, cartLocal, setCartLocal, ...props }) => {
 
   return (
     <aside className={classNames('wrapper', styles.container)}>
-      <div className={styles.header}>
-        <h2 className={classNames('aside__title', styles.title)}>
-          {cartContent.title}
-        </h2>
-        <RenderPageBody
-          items={cartLocal}
-          Card={CartItem}
-          stylesItem={classNames(styles.item, 'd-flex align-center ')}
-          LoadingPatternCard={OrderLoading}
-          noneCardsData={emptyText}
-          {...props}
-        />
+      <div className={classNames('wrapper', styles.wrapper)}>
+        <div className={styles.header}>
+          <h2 className={classNames('aside__title', styles.title)}>
+            {cartContent.title}
+          </h2>
+          <RenderPageBody
+            items={cartLocal}
+            Card={CartItem}
+            stylesItem={classNames(styles.item, 'd-flex align-center ')}
+            stylesBody={styles.items}
+            LoadingPatternCard={OrderLoading}
+            noneCardsData={emptyText}
+            {...props}
+          />
+        </div>
+        {cartLocal.length > 0 && (
+          <CartFooter
+            cartSum={cartSum}
+            items={cartLocal}
+            setCartLocal={setCartLocal}
+            cartOrderComplitContent={cartOrderComplitContent}
+            setEmptyText={setEmptyText}
+          />
+        )}
       </div>
-      {cartLocal.length > 0 && (
-        <CartFooter
-          cartSum={cartSum}
-          items={cartLocal}
-          setCartLocal={setCartLocal}
-          cartOrderComplitContent={cartOrderComplitContent}
-          setEmptyText={setEmptyText}
-        />
-      )}
     </aside>
   );
 };

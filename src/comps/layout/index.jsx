@@ -8,13 +8,13 @@ import styles from './layout.module.scss';
 export const Layout = ({ ...props }) => {
   const { cartSum } = props;
   return (
-    <div className={styles.container}>
-      <div className={classNames('wrapper', styles.main)}>
+    <div className={styles.wrapper}>
+      <div className={classNames('wrapper', styles.container)}>
         <Header cartSum={cartSum} />
+        <Aside {...props} />
 
         <Outlet />
       </div>
-      <Aside {...props} />
     </div>
   );
 };

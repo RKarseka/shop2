@@ -23,15 +23,15 @@ export const CartFooter = ({
         const element = items[index];
         await axiosDelId(CART_URL, element.id);
       }
+      const resp = await postOrder(cartSum, items);
+
       setIsOrderSending(false);
 
       setEmptyText({
         ...cartOrderComplitContent,
-        subtitle: cartOrderComplitContent.subtitle.replace(
-          '###',
-          `#${await postOrder(cartSum, items)}`
-        ),
+        subtitle: cartOrderComplitContent.subtitle.replace('###', `#${resp}`),
       });
+
       setCartLocal([]);
     } catch (error) {
       console.log(error);
