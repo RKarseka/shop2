@@ -9,26 +9,22 @@ export const Search = ({ searchValue, setSearchValue }) => {
     setSearchValue(event.target.value);
   };
   return (
-    <div className={classNames(styles.search, 'd-flex')}>
+    <div className={styles.search}>
+      <input
+        className={styles.input}
+        onChange={onChangeSearchInput}
+        type="text"
+        placeholder="Поиск..."
+        value={searchValue}
+      />
       {searchValue && (
         <img
           onClick={() => setSearchValue('')}
           className={classNames(styles.clear, 'cu-p')}
           src={remove}
           alt="Close"
-          width={32}
-          height={32}
         />
       )}
-
-      <img src="/img/search.svg" alt="search svg" />
-      <input
-        className={styles.input}
-        onChange={onChangeSearchInput}
-        value={searchValue}
-        type="text"
-        placeholder="Поиск..."
-      />
     </div>
   );
 };

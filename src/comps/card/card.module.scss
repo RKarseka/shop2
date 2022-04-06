@@ -1,10 +1,20 @@
 .card {
-  border: 1px solid #f8f8f8;
-  padding: 20px;
-  width: 220px;
-  border-radius: 40px;
+  position: relative;
+  display: grid;
+  align-content: space-between;
+  justify-items: center;
+  border: 1px solid var(--color-main);
+  padding: 15px;
+  // width: 100px;
+  height: 280px;
+  border-radius: 10px;
   transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
   // cursor: pointer;
+
+  @media screen and (max-width: 810px) {
+    padding: 10px;
+    height: 215px;
+  }
 
   &:hover {
     box-shadow: 0 20px 30px rgba(0, 0, 0, 0.06);
@@ -15,10 +25,15 @@
     font-weight: 400;
     font-size: 14px;
     padding: 1.5rem 0;
+    @media screen and (max-width: 810px) {
+      padding: 0.5rem 0;
+    }
   }
 
   .favorite {
     position: absolute;
+    left: 15px;
+    top: 15px;
   }
 
   .price {
@@ -29,4 +44,18 @@
       font-size: 13px;
     }
   }
+}
+
+.img {
+  object-fit: cover;
+  width: 170px;
+  height: 140px;
+  @media screen and (max-width: 810px) {
+    width: 120px;
+    height: 100px;
+  }
+}
+
+.footer {
+  justify-self: stretch;
 }

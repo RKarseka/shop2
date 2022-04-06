@@ -1,16 +1,16 @@
+import { useState } from 'react';
+
 import classNames from 'classnames';
+
+import { RenderPageBody } from '../render-page-body';
+import { OrderLoading } from '../card/card-loading';
+import { CartFooter } from './cart-footer';
+import { CartItem } from '../cart-item';
 
 import imgOrderComplite from '../../assets/img/complete-order.jpg';
 import imgCartEmpty from '../../assets/img/empty-cart.jpg';
 
-import { RenderPageBody } from '../render-page-body';
-import { OrderLoading } from '../card/card-loading';
-
-import { CartFooter } from './cart-footer';
-import { CartItem } from '../cart-item';
-
 import styles from './aside.module.scss';
-import { useState } from 'react';
 
 const cartContent = {
   title: 'Корзина',
@@ -27,16 +27,32 @@ const cartOrderComplitContent = {
   subtitle: 'Ваш заказ ### скоро будет передан курьерской доставке.',
 };
 
-export const Aside = ({ cartSum, cartLocal, setCartLocal, ...props }) => {
+export const Aside = ({
+  cartSum,
+  cartLocal,
+  setCartLocal,
+  isOverlayOpen,
+  togleOverlay,
+  ...props
+}) => {
   const [emptyText, setEmptyText] = useState({ ...cartEmptyContent });
 
   return (
-    <aside className={classNames('wrapper', styles.container)}>
-      <div className={classNames('wrapper', styles.wrapper)}>
+    <aside className={classNames(styles.container)}>
+      <div
+        className={classNames(
+          'wrapper',
+          styles.wrapper,
+          isOverlayOpen && styles.wrapper__open
+        )}
+      >
         <div className={styles.header}>
-          <h2 className={classNames('aside__title', styles.title)}>
-            {cartContent.title}
-          </h2>
+          <div className={classNames('aside__header', styles.title)}>
+            <h2 className="aside__title">{cartContent.title}</h2>
+            <div className={styles.close} onClick={togleOverlay}>
+              close
+            </div>
+          </div>
           <RenderPageBody
             items={cartLocal}
             Card={CartItem}
