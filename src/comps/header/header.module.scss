@@ -34,3 +34,9 @@
     }
   }
 }
+
+.cartLink {
+  @media screen and (max-width: 1155px) {
+    cursor: pointer;
+  }
+}

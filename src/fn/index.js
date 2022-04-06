@@ -36,3 +36,22 @@ export const postOrder = async (cartSum, cart) => {
     console.log(error);
   }
 };
+
+export const scrollOff = (
+  open
+  // , fn
+) => {
+  // fn(open);
+  if (open) {
+    document.body.style.overflowY = 'hidden';
+    document.body.style.top = `-${window.scrollY}px`;
+
+    document.body.style.position = 'fixed';
+  } else {
+    document.body.style.overflowY = 'visible';
+    const scrollY = document.body.style.top;
+    document.body.style.position = '';
+    document.body.style.top = '';
+    window.scrollTo(0, parseInt(scrollY || '0') * -1);
+  }
+};

@@ -1,19 +1,36 @@
 .container {
-  // display: none;
   position: absolute;
   right: -10px;
-  top: 30px;
-  // transform: translateX(calc(100% + 10px));
+  z-index: 1000;
 }
 
 .wrapper {
   position: fixed;
   top: 30px;
-  // left: 0;
+
   width: 320px;
+
   padding: 10px;
-  margin-bottom: 30px;
-  max-height: calc(100vh - 60px);
+
+  transition: all 0.1s ease-in, transform 0.4s ease-in-out 0.1s;
+
+  // display: grid;
+  // grid-template-rows: 1fr auto;
+  @media screen and (max-width: 1155px) {
+    top: 0;
+    height: 100%;
+    padding-bottom: 20vh;
+  }
+  @media screen and (min-width: 1155px) {
+    margin-bottom: 30px;
+    max-height: calc(100vh - 60px);
+  }
+
+  &__open {
+    @media screen and (max-width: 1155px) {
+      transform: translateX(-100%);
+    }
+  }
 }
 
 .header {

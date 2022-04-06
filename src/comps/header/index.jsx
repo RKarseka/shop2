@@ -18,7 +18,7 @@ export const Header = ({ cartSum }) => {
         </div>
       </Link>
       <div className={styles.header__links}>
-        <div>
+        <div className={styles.cartLink}>
           <img src={cart} alt="favorites item" width={18} height={18} />
           <p>{`${cartSum} руб.`}</p>
         </div>

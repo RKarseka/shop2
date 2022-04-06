@@ -9,9 +9,9 @@ export const Search = ({ searchValue, setSearchValue }) => {
     setSearchValue(event.target.value);
   };
   return (
-    <div class={styles.search}>
+    <div className={styles.search}>
       <input
-        class={styles.input}
+        className={styles.input}
         onChange={onChangeSearchInput}
         type="text"
         placeholder="Поиск..."

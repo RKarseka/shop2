@@ -27,12 +27,24 @@ const cartOrderComplitContent = {
   subtitle: 'Ваш заказ ### скоро будет передан курьерской доставке.',
 };
 
-export const Aside = ({ cartSum, cartLocal, setCartLocal, ...props }) => {
+export const Aside = ({
+  cartSum,
+  cartLocal,
+  setCartLocal,
+  isOverlayOpen,
+  ...props
+}) => {
   const [emptyText, setEmptyText] = useState({ ...cartEmptyContent });
 
   return (
     <aside className={classNames(styles.container)}>
-      <div className={classNames('wrapper', styles.wrapper)}>
+      <div
+        className={classNames(
+          'wrapper',
+          styles.wrapper,
+          isOverlayOpen && styles.wrapper__open
+        )}
+      >
         <div className={styles.header}>
           <h2 className={classNames('aside__title', styles.title)}>
             {cartContent.title}
