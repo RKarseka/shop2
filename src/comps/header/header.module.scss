@@ -6,7 +6,8 @@
   align-items: center;
   z-index: 100;
   background-color: #fff;
-  border-radius: 8px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 
   @media screen and (max-width: 810px) {
     top: 0;
