@@ -44,6 +44,7 @@
 
 .close {
   display: none;
+  cursor: pointer;
 
   @media screen and (max-width: 1155px) {
     display: block;
