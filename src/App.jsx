@@ -106,6 +106,21 @@ export const App = () => {
             />
           }
         />
+        <Route
+          path="*"
+          element={
+            <Main
+              items={sneakers}
+              isLoading={isCardsLoading}
+              cartLocal={cartLocal}
+              favLocal={favLocal}
+              toggleFavBtn={toggleFavBtn}
+              toggleCartBtn={toggleCartBtn}
+              stylesItem={cardStyles.card}
+              stylesBody={'main-card'}
+            />
+          }
+        />
       </Route>
     </Routes>
   );
