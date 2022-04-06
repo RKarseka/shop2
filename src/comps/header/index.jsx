@@ -7,7 +7,10 @@ import cart from '../../assets/img/cart.svg';
 
 import styles from './header.module.scss';
 
-export const Header = ({ cartSum }) => {
+export const Header = ({ togleOverlay, cartSum }) => {
+  const openCart = () => {
+    if (window.innerWidth < 1156) togleOverlay();
+  };
   return (
     <header className={classNames('header', styles.header)}>
       <Link to={'/'} className={styles.header__link}>
@@ -18,7 +21,7 @@ export const Header = ({ cartSum }) => {
         </div>
       </Link>
       <div className={styles.header__links}>
-        <div className={styles.cartLink}>
+        <div className={styles.cartLink} onClick={openCart}>
           <img src={cart} alt="favorites item" width={18} height={18} />
           <p>{`${cartSum} руб.`}</p>
         </div>

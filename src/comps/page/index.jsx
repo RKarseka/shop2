@@ -13,7 +13,7 @@ export const Page = ({
   ...props
 }) => {
   return (
-    <main className={styles.container}>
+    <main className={'page__container'}>
       <div className={styles.header}>
         <div className={styles.title}>
           {back && (
@@ -31,7 +31,7 @@ export const Page = ({
         </div>
         {search}
       </div>
-      <RenderPageBody stylesBody={styles.body} {...props} />
+      <RenderPageBody {...props} />
     </main>
   );
 };

@@ -16,22 +16,8 @@ const data = {
   },
 };
 
-export const Orders = () => {
-  const [ordersList, setOrdersList] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+export const Orders = ({ ordersList, setOrdersList, ...props }) => {
   const [isHandlingRequest, setisHandlingRequest] = useState(false);
-
-  useEffect(() => {
-    (async () => {
-      try {
-        setIsLoading(true);
-        setOrdersList(await axiosGet(ORDERS_URL));
-        setIsLoading(false);
-      } catch (error) {
-        console.log(error);
-      }
-    })();
-  }, []);
 
   const removeOrder = async (id) => {
     if (isHandlingRequest) return;
@@ -50,11 +36,12 @@ export const Orders = () => {
       <Page
         Card={OrdersCard}
         LoadingPatternCard={OrderLoading}
-        stylesItem={stylesOrdersCard.body}
+        stylesItem={stylesOrdersCard.card}
+        stylesBody={stylesOrdersCard.cards}
         items={ordersList}
         removeOrder={removeOrder}
-        isLoading={isLoading}
         {...data}
+        {...props}
         back
       />
     </>

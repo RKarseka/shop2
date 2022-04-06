@@ -32,6 +32,7 @@ export const Aside = ({
   cartLocal,
   setCartLocal,
   isOverlayOpen,
+  togleOverlay,
   ...props
 }) => {
   const [emptyText, setEmptyText] = useState({ ...cartEmptyContent });
@@ -46,9 +47,12 @@ export const Aside = ({
         )}
       >
         <div className={styles.header}>
-          <h2 className={classNames('aside__title', styles.title)}>
-            {cartContent.title}
-          </h2>
+          <div className={classNames('aside__header', styles.title)}>
+            <h2 className="aside__title">{cartContent.title}</h2>
+            <div className={styles.close} onClick={togleOverlay}>
+              close
+            </div>
+          </div>
           <RenderPageBody
             items={cartLocal}
             Card={CartItem}

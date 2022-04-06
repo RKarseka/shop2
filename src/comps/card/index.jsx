@@ -39,8 +39,6 @@ export const Card = ({
         className={styles.img}
         src={`${ITEM_PATH}${itemId}.jpg`}
         alt="sneakers #1 img"
-        width={170}
-        height={140}
       />
       <h5 className={styles.title}>{title}</h5>
       <div

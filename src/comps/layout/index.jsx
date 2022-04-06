@@ -6,21 +6,31 @@ import { CartLink } from '../cart-respons/cart-link';
 import { Header } from '../header';
 
 import styles from './layout.module.scss';
+import { scrollOff } from '../../fn';
 
 export const Layout = ({ ...props }) => {
   const [isOverlayOpen, setIsOverlayOpen] = useState(false);
+
+  const togleOverlay = () => {
+    scrollOff(!isOverlayOpen);
+    setIsOverlayOpen(!isOverlayOpen);
+  };
 
   const { cartSum } = props;
   return (
     <div className={styles.wrapper}>
       <div className={classNames('wrapper', styles.container)}>
-        <Header cartSum={cartSum} />
+        <Header togleOverlay={togleOverlay} cartSum={cartSum} />
 
         <Outlet />
 
-        <Aside isOverlayOpen={isOverlayOpen} {...props} />
+        <Aside
+          togleOverlay={togleOverlay}
+          isOverlayOpen={isOverlayOpen}
+          {...props}
+        />
         <CartLink
-          setIsOverlayOpen={setIsOverlayOpen}
+          togleOverlay={togleOverlay}
           isOverlayOpen={isOverlayOpen}
           cartSum={cartSum}
         />

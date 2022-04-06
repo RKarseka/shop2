@@ -1,11 +1,6 @@
-import { scrollOff } from '../../fn';
 import styles from './cartResponce.module.scss';
 
-export const CartLink = ({ isOverlayOpen, setIsOverlayOpen, cartSum }) => {
-  const togleOverlay = () => {
-    scrollOff(!isOverlayOpen);
-    setIsOverlayOpen(!isOverlayOpen);
-  };
+export const CartLink = ({ isOverlayOpen, togleOverlay, cartSum }) => {
   return (
     <>
       {isOverlayOpen && (

@@ -5,7 +5,7 @@ import { Orders } from './pages/orders';
 
 import { useEffect, useState } from 'react';
 import { axiosGet } from './axios';
-import { CART_URL, FAV_URL, ITEMS_URL } from './const';
+import { CART_URL, FAV_URL, ITEMS_URL, ORDERS_URL } from './const';
 import { toggleBtn } from './fn';
 
 import { Favorites } from './pages/favorites';
@@ -21,11 +21,14 @@ export const App = () => {
   const [cartLocal, setCartLocal] = useState([]);
   const [cartSum, setCartSum] = useState(0);
   const [favLocal, setFavLocal] = useState([]);
+  const [ordersList, setOrdersList] = useState([]);
 
   useEffect(() => {
     (async () => {
       try {
         setIsCardsLoading(true);
+        setOrdersList(await axiosGet(ORDERS_URL));
+
         setCartLocal(await axiosGet(CART_URL));
         setFavLocal(await axiosGet(FAV_URL));
         setSneakers(await axiosGet(ITEMS_URL));
@@ -74,6 +77,7 @@ export const App = () => {
               toggleFavBtn={toggleFavBtn}
               toggleCartBtn={toggleCartBtn}
               stylesItem={cardStyles.card}
+              stylesBody={'main-card'}
             />
           }
         />
@@ -88,10 +92,20 @@ export const App = () => {
               isLoading={isCardsLoading}
               cartLocal={cartLocal}
               stylesItem={cardStyles.card}
+              stylesBody={'main-card'}
             />
           }
         />
-        <Route path="orders" element={<Orders />} />
+        <Route
+          path="orders"
+          element={
+            <Orders
+              ordersList={ordersList}
+              setOrdersList={setOrdersList}
+              isLoading={isCardsLoading}
+            />
+          }
+        />
       </Route>
     </Routes>
   );

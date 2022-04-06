@@ -1,7 +1,3 @@
-.container {
-  padding: 40px;
-}
-
 .header {
   display: grid;
   grid-auto-flow: column;
@@ -9,13 +5,14 @@
 
   align-items: center;
   margin-bottom: 40px;
-}
 
-.body {
-  display: grid;
-  grid-gap: 40px 25px;
-  grid-template-columns: repeat(auto-fill, 220px);
-  justify-content: center;
+  @media screen and (max-width: 810px) {
+    grid-auto-flow: unset;
+    justify-content: unset;
+    justify-items: center;
+    grid-gap: 10px;
+    margin: 20px;
+  }
 }
 
 .title {

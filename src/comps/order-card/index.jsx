@@ -4,6 +4,7 @@ import { ITEM_PATH } from '../../const';
 import remove from '../../assets/img/btn-remove.svg';
 
 import styles from './order.module.scss';
+import classNames from 'classnames';
 
 export const OrdersCard = ({ item, removeOrder }) => {
   const { id, sum, rows } = item;
@@ -30,7 +31,7 @@ export const OrdersCard = ({ item, removeOrder }) => {
 
       <img
         onClick={() => removeOrder(id)}
-        className="remove-btn"
+        className={classNames('remove-btn', styles.remove)}
         src={remove}
         alt="Remove item"
         width={32}
