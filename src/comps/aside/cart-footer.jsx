@@ -12,6 +12,7 @@ export const CartFooter = ({
   items,
   setEmptyText,
   cartOrderComplitContent,
+  loadOrdersList,
 }) => {
   const [isOrderSending, setIsOrderSending] = useState(false);
 
@@ -33,6 +34,7 @@ export const CartFooter = ({
       });
 
       setCartLocal([]);
+      loadOrdersList();
     } catch (error) {
       console.log(error);
     }

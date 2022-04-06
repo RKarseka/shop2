@@ -23,15 +23,23 @@ export const App = () => {
   const [favLocal, setFavLocal] = useState([]);
   const [ordersList, setOrdersList] = useState([]);
 
+  const loadOrdersList = async () => {
+    setIsCardsLoading(true);
+    setOrdersList(await axiosGet(ORDERS_URL));
+    setIsCardsLoading(false);
+  };
+
   useEffect(() => {
     (async () => {
       try {
         setIsCardsLoading(true);
-        setOrdersList(await axiosGet(ORDERS_URL));
 
         setCartLocal(await axiosGet(CART_URL));
         setFavLocal(await axiosGet(FAV_URL));
         setSneakers(await axiosGet(ITEMS_URL));
+
+        setOrdersList(await axiosGet(ORDERS_URL));
+
         setIsCardsLoading(false);
       } catch (error) {
         console.log(error);
@@ -63,6 +71,7 @@ export const App = () => {
             toggleCartBtn={toggleCartBtn}
             setCartLocal={setCartLocal}
             isLoading={isCardsLoading}
+            loadOrdersList={loadOrdersList}
           />
         }
       >

@@ -25,11 +25,13 @@ export const Header = ({ togleOverlay, cartSum }) => {
           <img src={cart} alt="favorites item" width={18} height={18} />
           <p>{`${cartSum} руб.`}</p>
         </div>
-        <Link to={'/favorites'}>
+        <Link to={'/favorites'} className={styles.cartLink}>
           <img src={heart} alt="favorites item" width={18} height={18} />
+          <p>Избранное</p>
         </Link>
-        <Link to={'/orders'}>
+        <Link to={'/orders'} className={styles.cartLink}>
           <img src={user} alt="orders item" width={18} height={18} />
+          <p>Мои заказы</p>
         </Link>
       </div>
     </header>

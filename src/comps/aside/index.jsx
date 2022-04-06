@@ -33,6 +33,7 @@ export const Aside = ({
   setCartLocal,
   isOverlayOpen,
   togleOverlay,
+  loadOrdersList,
   ...props
 }) => {
   const [emptyText, setEmptyText] = useState({ ...cartEmptyContent });
@@ -70,6 +71,7 @@ export const Aside = ({
             setCartLocal={setCartLocal}
             cartOrderComplitContent={cartOrderComplitContent}
             setEmptyText={setEmptyText}
+            loadOrdersList={loadOrdersList}
           />
         )}
       </div>
