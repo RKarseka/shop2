@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { axiosDelId, axiosGet } from '../../axios';
+import { useState } from 'react';
+import { axiosDelId } from '../../axios';
 import { Page } from '../../comps/page';
 import { OrderLoading } from '../../comps/card/card-loading';
 import { OrdersCard } from '../../comps/order-card';
