@@ -1,19 +1,17 @@
 import { axiosDelId, axiosPost } from '../axios';
-import { ORDERS_URL } from '../const';
+// import { ORDERS_URL } from '../const';
 
-export const toggleBtn = async (item, id, setArrFn, arr, URL) => {
+export const toggleBtn = async (item, id, setArrFn, arr, type) => {
   try {
     if (id) {
-      await axiosDelId(URL, Number(id));
+      // await axiosDelId(URL, Number(id));
 
       setArrFn(arr.filter(({ itemId }) => itemId !== item.itemId));
       return false;
     } else {
-      const newId = await axiosPost(URL, item);
-
-      setArrFn((prev) => [...prev, { ...item, id: newId }]);
-
-      return newId;
+      // const newId = await axiosPost(URL, item);
+      // setArrFn((prev) => [...prev, { ...item, id: newId }]);
+      // return newId;
     }
   } catch (err) {
     console.log(err);
@@ -31,7 +29,7 @@ export const postOrder = async (cartSum, cart) => {
   order.sum = cartSum;
   order.rows = [...cart];
   try {
-    return await axiosPost(ORDERS_URL, order);
+    // return await axiosPost(ORDERS_URL, order);
   } catch (error) {
     console.log(error);
   }

@@ -5,7 +5,7 @@ import { Orders } from './pages/orders';
 
 import { useEffect, useState } from 'react';
 import { axiosGet } from './axios';
-import { CART_URL, FAV_URL, ITEMS_URL, ORDERS_URL } from './const';
+// import { CART_URL, FAV_URL, ITEMS_URL, ORDERS_URL } from './const';
 import { toggleBtn } from './fn';
 
 import { Favorites } from './pages/favorites';
@@ -25,7 +25,11 @@ export const App = () => {
 
   const loadOrdersList = async () => {
     setIsCardsLoading(true);
-    setOrdersList(await axiosGet(ORDERS_URL));
+    try {
+      await axiosGet().then((data) => {
+        setOrdersList(data[1].orders);
+      });
+    } catch (error) {}
     setIsCardsLoading(false);
   };
 
@@ -34,11 +38,12 @@ export const App = () => {
       try {
         setIsCardsLoading(true);
 
-        setCartLocal(await axiosGet(CART_URL));
-        setFavLocal(await axiosGet(FAV_URL));
-        setSneakers(await axiosGet(ITEMS_URL));
-
-        setOrdersList(await axiosGet(ORDERS_URL));
+        await axiosGet().then((data) => {
+          setCartLocal(data[1].cart);
+          setFavLocal(data[1].favorites);
+          setOrdersList(data[1].orders);
+          setSneakers(data[0]);
+        });
 
         setIsCardsLoading(false);
       } catch (error) {
@@ -55,10 +60,10 @@ export const App = () => {
   }, [cartLocal]);
 
   const toggleFavBtn = (item, id) =>
-    toggleBtn(item, id, setFavLocal, favLocal, FAV_URL);
+    toggleBtn(item, id, setFavLocal, favLocal, 'favorites');
 
   const toggleCartBtn = (item, id) =>
-    toggleBtn(item, id, setCartLocal, cartLocal, CART_URL);
+    toggleBtn(item, id, setCartLocal, cartLocal, 'cart');
 
   return (
     <Routes>

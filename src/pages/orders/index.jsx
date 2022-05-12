@@ -3,7 +3,7 @@ import { axiosDelId } from '../../axios';
 import { Page } from '../../comps/page';
 import { OrderLoading } from '../../comps/card/card-loading';
 import { OrdersCard } from '../../comps/order-card';
-import { ORDERS_URL } from '../../const';
+// import { ORDERS_URL } from '../../const';
 
 import stylesOrdersCard from '../../comps/order-card/order.module.scss';
 
@@ -23,7 +23,7 @@ export const Orders = ({ ordersList, setOrdersList, ...props }) => {
     if (isHandlingRequest) return;
     try {
       setisHandlingRequest(true);
-      await axiosDelId(ORDERS_URL, id);
+      // await axiosDelId(ORDERS_URL, id);
       setOrdersList(ordersList.filter((i) => i.id !== id));
       setisHandlingRequest(false);
     } catch (error) {

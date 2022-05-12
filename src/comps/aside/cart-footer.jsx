@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { useState } from 'react';
 import { axiosDelId } from '../../axios';
-import { CART_URL } from '../../const';
+// import { CART_URL } from '../../const';
 import { postOrder } from '../../fn';
 
 import styles from './cart.module.scss';
@@ -22,7 +22,7 @@ export const CartFooter = ({
 
       for (let index = 0; index < items.length; index++) {
         const element = items[index];
-        await axiosDelId(CART_URL, element.id);
+        // await axiosDelId(CART_URL, element.id);
       }
       const resp = await postOrder(cartSum, items);
 

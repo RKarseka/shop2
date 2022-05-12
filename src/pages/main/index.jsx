@@ -69,7 +69,7 @@ export const Main = ({ items, ...props }) => {
   const filtredItems =
     items &&
     items.filter((item) =>
-      item.title.toLowerCase().includes(searchValue?.toLowerCase())
+      item.title?.toLowerCase().includes(searchValue?.toLowerCase())
     );
   return (
     <>
